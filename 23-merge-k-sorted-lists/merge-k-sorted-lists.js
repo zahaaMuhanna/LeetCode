@@ -12,9 +12,7 @@
 var mergeKLists = function(lists) {
     let minHeap = [];
     for(let list of lists){
-        if(list!==null){
-        minHeap.push(list);
-        }
+        if(list!==null) minHeap.push(list);
     }
     minHeap.sort((a,b)=>a.val - b.val);
 
