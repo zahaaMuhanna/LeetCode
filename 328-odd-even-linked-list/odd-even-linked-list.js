@@ -11,16 +11,28 @@
  */
 var oddEvenList = function(head) {
     if(head === null || head.next === null) return head;
-    let even = head.next;
-    let odd = head;
-    let ptr = even;
-    while(even && even.next){
-        odd.next = even.next;
-        even.next = even.next.next;
-        odd.next.next = ptr;
-        odd= odd.next;
-        even = even.next;
-    }
 
-    return head;
+    let even = new ListNode(0);
+    let odd = new ListNode(0);
+
+    let evenPtr=even;
+    let oddPtr=odd;
+
+    let indx=1;
+
+    while(head !== null){
+        if(indx % 2 === 0){
+            evenPtr.next=head;
+            evenPtr = evenPtr.next;
+        }else{
+            oddPtr.next=head;
+            oddPtr=oddPtr.next;
+        }
+        head=head.next;
+        indx++;
+    }
+    evenPtr.next=null;
+    oddPtr.next=even.next;
+
+    return odd.next;
 };
